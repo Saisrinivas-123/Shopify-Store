@@ -15,6 +15,7 @@ const Appliances: React.FC = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState('Home Appliances');
     const [isLoading, setIsLoading] = useState(true);
+    const [addedProductIds, setAddedProductIds] = useState<number[]>([]); 
 
     const handleClick = (product: any) => {
         setSelectedProduct(product);
@@ -25,6 +26,8 @@ const Appliances: React.FC = () => {
             (product) => product.category.toLowerCase() === selectedCategory.toLowerCase()
         )
         : ProductJson;
+
+    const filterData = filteredProducts.filter((value) => !addedProductIds.includes(value.id)); 
 
     useEffect(() => {
         setTimeout(() => {
@@ -43,10 +46,11 @@ const Appliances: React.FC = () => {
                     selectedProduct ? (
                         <ProductDetails
                             selectedProduct={selectedProduct}
+                            setAddedProductIds={setAddedProductIds}
                             closeProduct={() => setSelectedProduct(null)}
                         />
                     ) : (
-                        filteredProducts?.map((product: any) => (
+                        filterData?.map((product: any) => (
                             <div
                                 key={product.id}
                                 className="product-card"

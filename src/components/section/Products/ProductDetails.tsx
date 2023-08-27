@@ -8,15 +8,17 @@ import './ProductsDetails.css';
 interface ProductDetailsProps {
     selectedProduct: any;
     closeProduct: () => void;
+    setAddedProductIds?: any
 }
 
-const ProductDetails: React.FC<ProductDetailsProps> = ({ selectedProduct, closeProduct }) => {
+const ProductDetails: React.FC<ProductDetailsProps> = ({ setAddedProductIds, selectedProduct, closeProduct }) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const dispatch = useDispatch();
 
     const handleFavoriteClick = (value: any) => {
         setIsFavorite(true);
         dispatch(cartDetailsData(value));
+        setAddedProductIds((prevIds: any) => [...prevIds, value.id]);
     };
 
     const handleCloseClick = () => {

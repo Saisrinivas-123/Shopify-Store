@@ -15,6 +15,7 @@ const Furniture: React.FC = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [selectedCategory, setSelectedCategory] = useState('Home & Furniture');
     const [isLoading, setIsLoading] = useState(true);
+    const [addedProductIds, setAddedProductIds] = useState<number[]>([]);
 
     const handleClick = (product: any) => {
         setSelectedProduct(product);
@@ -26,12 +27,13 @@ const Furniture: React.FC = () => {
         )
         : ProductJson;
 
-        useEffect(() => {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 1000);
-        }, [])
+    const filterData = filteredProducts.filter((value) => !addedProductIds.includes(value.id));
 
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1000);
+    }, [])
     return (
         <div className='cart-page'>
             <Header />
@@ -44,10 +46,11 @@ const Furniture: React.FC = () => {
                     selectedProduct ? (
                         <ProductDetails
                             selectedProduct={selectedProduct}
+                            setAddedProductIds={setAddedProductIds}
                             closeProduct={() => setSelectedProduct(null)}
                         />
                     ) : (
-                        filteredProducts?.map((product: any) => (
+                        filterData?.map((product: any) => (
                             <div
                                 key={product.id}
                                 className="product-card"

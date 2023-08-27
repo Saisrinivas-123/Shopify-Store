@@ -10,10 +10,12 @@ const Products: React.FC = () => {
     const cartData = useSelector((state: any) => state.cartItems.cartData);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { data, isError, isSuccess, isLoading, isFetching } = useGetDataQuery({ skip: false });
+    const [addedProductIds, setAddedProductIds] = useState<number[]>([]);
 
     const handleClick = (product: any) => {
         setSelectedProduct(product);
     };
+    const filterData = data?.filter((value: any) => !addedProductIds.includes(value.id));
 
     return (
         <div className="products-container">
@@ -23,11 +25,12 @@ const Products: React.FC = () => {
                     {cartData.length > 0 && <ProductsUpdate />}
                     {selectedProduct ? (
                         <ProductDetails
+                            setAddedProductIds={setAddedProductIds}
                             selectedProduct={selectedProduct}
                             closeProduct={() => setSelectedProduct(null)}
                         />
                     ) : (
-                        data?.map((product: any) => (
+                        filterData?.map((product: any) => (
                             <div
                                 key={product.id}
                                 className="product-card"
