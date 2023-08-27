@@ -40,7 +40,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ setAddedProductIds, sel
                     <div className="movie-footer">
                         <p className="genre">Category: {selectedProduct.category}</p>
                         <div className="price-add-cart">
-                            <p className="rating-value">$Price: {selectedProduct.price}</p>
+                            <p className="rating-value">Price: ${selectedProduct.price}</p>
                             <div className="favorite-button" onClick={() => handleFavoriteClick(selectedProduct)}>
                                 {isFavorite ? icon2 : icon1} Add To Cart
                             </div>
