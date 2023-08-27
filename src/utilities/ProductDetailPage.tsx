@@ -3,11 +3,11 @@ import SimpleCarousel from './SimpleCarousel';
 
 const ProductDetailPage: React.FC = () => {
   const productImages = [
-    '/Carousels/one.png',
-    '/Carousels/two.png',
-    '/Carousels/three.png',
-    '/Carousels/four.png',
-    '/Carousels/five.png',
+    '../../public/Carousels/one.png',
+    '../../public/Carousels/two.png',
+    '../../public/Carousels/three.png',
+    '../../public/Carousels/four.png',
+    '../../public/Carousels/five.png',
   ];
 
   return (

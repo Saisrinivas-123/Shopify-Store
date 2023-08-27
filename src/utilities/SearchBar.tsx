@@ -18,9 +18,9 @@ const SearchBar: React.FC = () => {
             >
                 <TextField
                     className="search-input"
-                    label="Dummy Search"
+                    label="Nothing to search"
                     variant="outlined"
-                    onChange={()=> {''}}
+                    onChange={() => { '' }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
