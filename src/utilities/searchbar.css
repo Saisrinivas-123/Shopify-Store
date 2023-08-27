@@ -1,0 +1,21 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 1rem;
+    flex-grow: 1; 
+}
+
+.search-icon {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.search-icon:hover {
+    color: #f36f21; 
+}
